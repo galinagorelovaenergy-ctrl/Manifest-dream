@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <script>
+    (function () {
+      var saved = localStorage.getItem("manifest_theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -17,13 +25,31 @@
   <header class="site-nav">
     <div class="container">
       <a href="#" class="logo">Manifest<span>.</span></a>
-      <button type="button" class="nav-toggle" aria-label="Меню">☰</button>
       <ul class="nav-links">
         <li><a href="#about">О проекте</a></li>
         <li><a href="#features">Возможности</a></li>
         <li><a href="#how">Как это работает</a></li>
         <li><a href="#app" class="nav-cta">Открыть приложение</a></li>
       </ul>
+      <div class="nav-actions">
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Переключить на светлую тему"
+          aria-pressed="false"
+          title="Светлая / тёмная тема"
+        >
+          <span class="theme-toggle__halo" aria-hidden="true"></span>
+          <span class="theme-toggle__body">
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☽</span>
+            <span class="theme-toggle__knob" aria-hidden="true"></span>
+          </span>
+          <span class="theme-toggle__text">Тема</span>
+        </button>
+        <button type="button" class="nav-toggle" aria-label="Меню">☰</button>
+      </div>
     </div>
   </header>
 
@@ -207,3 +233,4 @@
   <script src="js/app.js"></script>
 </body>
 </html>
+
